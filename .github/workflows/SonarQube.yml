@@ -22,3 +22,8 @@ jobs:
               -Dsonar.objc.file.suffixes=-
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: Store dna xml & json files
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.event.repository.name }}-dna-scan-artifacts
+          path: ./.scannerwork/architecture/exports/
