@@ -22,6 +22,9 @@ jobs:
               -Dsonar.objc.file.suffixes=-
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: ls
+        run: |
+          ls -lR .
       - name: Store dna xml & json files
         uses: actions/upload-artifact@v4
         with:
