@@ -22,11 +22,14 @@ jobs:
               -Dsonar.objc.file.suffixes=-
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_ARCHITECTURE_EXPORT_GRAPHS: true
+          SONAR_ARCHITECTURE_EXPORT_FLAVOR: true
+          SONAR_ARCHITECTURE_EXPORT_ISSUES: true
       - name: ls
         run: |
-          ls -lR .
+          ls -lR /home/runner/work/anchore-engine/anchore-engine/.scannerwork
       - name: Store dna xml & json files
         uses: actions/upload-artifact@v4
         with:
           name: ${{ github.event.repository.name }}-dna-scan-artifacts
-          path: ./.scannerwork/architecture/exports/
+          path: /home/runner/work/anchore-engine/anchore-engine/.scannerwork/architecture/exports/
